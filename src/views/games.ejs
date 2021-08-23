@@ -1,0 +1,70 @@
+<%- include('partials/header.ejs') %> 
+
+<body class="p-5 bg-gray-200">
+
+    <%- include('partials/navbar.ejs') %> 
+   
+        <div class="pt-6 bg-white rounded shadow-md">
+            <div class="px-4">
+                <h2 class="text-lg font-medium leading-6 text-gray-900">
+                    Lista de Games
+                </h2>
+            </div>
+            <div class="mt-6">
+                
+                <table class="w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-200 ">
+                        <tr>
+                            <th class="px-6 py-3 text-xs font-bold tracking-wider text-left uppercase text-grady-500" >ID</th>
+                            <th class="px-6 py-3 text-xs font-bold tracking-wider text-left uppercase text-grady-500">Título</th>
+                            <th class="px-6 py-3 text-xs font-bold tracking-wider text-left uppercase text-grady-500">Ano</th>
+                            <th class="px-6 py-3 text-xs font-bold tracking-wider text-left uppercase text-grady-500">Preço</th>
+                            <th class="px-6 py-3 text-xs font-bold tracking-wider text-left uppercase text-grady-500">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+
+                        <% games.forEach(game => { %>
+                            <tr>
+                                <td class="px-6 py-3 text-sm font-medium text-gray-900 whitespace-nowrap"><%= game.id %></td>
+                                <td class="px-6 py-3 text-sm font-medium text-gray-900 whitespace-nowrap"><%= game.title %></td>
+                                <td class="px-6 py-3 text-sm font-medium text-gray-900 whitespace-nowrap"><%= game.year %></td>
+                                <td class="px-6 py-3 text-sm font-medium text-gray-900 whitespace-nowrap"><%= game.price %></td>
+                                <td>
+                                    <a href="admin/game/edit/<%= game.id %>"
+                                        class="px-3 py-2 mr-2 text-yellow-900 transition duration-300 bg-yellow-400 rounded hover:bg-yellow-300 hover:text-yellow-800">
+                                        Editar
+                                    </a>
+                        
+                                    <form method="POST" action="/admin/games/delete" style="display: inline;" onsubmit="confirmDelete(event, this)">
+                                        <!-- this referenciando o formulario -->                                        
+                                        <input type="hidden" name="id" value="<%= game.id %>">
+                                        <button class="px-3 py-2 mt-3 text-white transition duration-300 bg-red-600 rounded hover:bg-red-500 hover:red-800" >
+                                           Deletar
+                                       </button>
+                                    </form>
+                                </td>
+                            </tr>
+                          
+                        <% }) %>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+<script>
+   function confirmDelete(event, form) {
+       event.preventDefault()
+       const decision = confirm("Confirme para deletar esse game.")
+
+       if(decision) {
+           form.submit()
+       }
+
+     }
+    
+</script>
+        
+</body>

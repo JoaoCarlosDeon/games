@@ -1,0 +1,54 @@
+<%- include('partials/header.ejs') %> 
+
+<body>
+
+    <%- include('partials/navbar.ejs') %> 
+    
+    <div class="flex justify-center w-15">       
+
+
+        <div class="w-full max-w-xs pt-9">
+            <h1 class="mb-1 text-2xl font-bold text-center text-black-600">Cadastar novo game</h1>
+
+            <form method="POST" action="/new-game/save" class="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md ">
+              <div class="mb-4">
+                <label class="block mb-2 text-sm font-bold text-gray-700" for="title">
+                    Title
+                </label>
+                <input class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" name="title" id="title" type="text" placeholder="Insira o título do game">
+              </div>
+
+              <div class="mb-6">
+                <label class="block mb-2 text-sm font-bold text-gray-700" for="year">
+                    Ano de lançamento:
+                </label>
+                <input class="w-full px-3 py-2 mb-3 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" name="year" id="year" type="data" step="0.01" placeholder="Insira o ano">
+                
+              </div>
+
+              <div class="mb-6">
+                <label class="block mb-2 text-sm font-bold text-gray-700" for="price">
+                    Preço do game:
+                </label>
+                <input class="w-full px-3 py-2 mb-3 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" name="price" id="price" type="number" step="any" placeholder="Insira o preço">
+                
+              </div>
+
+              <div class="flex items-center justify-between">
+                <button class="w-full px-3 py-2 text-yellow-900 transition duration-300 bg-yellow-400 rounded hover:bg-yellow-300 hover:text-yellow-800">
+                  Cadastrar
+                </button>
+                
+              </div>
+
+            </form>
+            <p class="text-xs text-center text-gray-500">
+              &copy;2021 Arte e Design. All rights reserved.
+            </p>
+          </div>      
+
+        
+    </div>
+    
+</body>
+</html>
